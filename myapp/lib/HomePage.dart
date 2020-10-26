@@ -128,14 +128,19 @@ class _HomePageState extends State<HomePage> {
 
   Widget _pushSaved() {
     return Center(
-      child: Text(
-        "Total : " + val.toString(),
-        style: new TextStyle(
-          fontSize: 30.0,
-          color: Colors.black,
+        child: CircleAvatar(
+      backgroundColor: setColor(val),
+      radius: 100,
+      child: Center(
+        child: Text(
+          "Total : " + val.toString(),
+          style: new TextStyle(
+            fontSize: 30.0,
+            color: Colors.black,
+          ),
         ),
       ),
-    );
+    ));
   }
 
   Widget _list() {
@@ -144,5 +149,17 @@ class _HomePageState extends State<HomePage> {
       // in the middle of the parent.
       child: _buildSuggestions(),
     );
+  }
+
+  setColor(double val) {
+    if (val >= 0.00 && val < 25.00) {
+      return Colors.green;
+    } else if (val >= 25.00 && val < 50.00) {
+      return Colors.yellow;
+    } else if (val >= 50.00) {
+      return Colors.red;
+    } else {
+      return Colors.grey;
+    }
   }
 }
